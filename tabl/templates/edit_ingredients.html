@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block content %}
+     <div class="content-section" style="background-color: #ff6800; border:none; padding: 40px; margin-top: 50px; border-radius: 10px">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Ingredient editor</legend>
+
+                <div class="form-group">
+                    {{ form.new_ingredient_name.label(class="form-control-label") }}
+                    {% if form.new_ingredient_name.errors %}
+                        {{ form.new_ingredient_name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.new_ingredient_name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.new_ingredient_name(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.new_ingredient_category.label(class="form-control-label") }}
+                    {% if form.new_ingredient_category.errors %}
+                        {{ form.new_ingredient_category(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.new_ingredient_category.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.new_ingredient_category(class="custom-select form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="container" style="background-color: #ff6800; border-style: solid; border-width: medium; border-color: white; border-radius: 5px; padding: 15px">
+                <h5 class="font-weight-light" style="margin-bottom: 15px">Remove ingredients</h5>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.remove_carbs.label(class="form-control-label font-weight-light") }}
+                                {% for carb in form.remove_carbs %}
+                                    <div class="form-check">
+                                            {{ carb(class="custom-control-input") }}
+                                            {{ carb.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.remove_carbs.errors %}
+                                    {{ form.remove_carbs(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.remove_carbs.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.remove_proteins.label(class="form-control-label font-weight-light") }}
+                                {% for protein in form.remove_proteins %}
+                                    <div class="form-check">
+                                            {{ protein(class="custom-control-input") }}
+                                            {{ protein.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.remove_proteins.errors %}
+                                    {{ form.remove_proteins(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.remove_proteins.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.remove_flavourings.label(class="form-control-label font-weight-light") }}
+                                {% for flavouring in form.remove_flavourings %}
+                                    <div class="form-check">
+                                            {{ flavouring(class="custom-control-input") }}
+                                            {{ flavouring.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.remove_flavourings.errors %}
+                                    {{ form.remove_flavourings(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.remove_flavourings.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group" style="padding-bottom:5px">
+                {{ form.submit(class="btn btn-tabl") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

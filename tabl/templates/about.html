@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="background-color:rgba(255,255,255,0.65) ; border:none; padding-bottom: 50px; margin-top: 50px; border-radius: 10px; text-align: center">
+    <h1 style="margin-top:30px; margin-bottom: 20px">About Page</h1>
+    <div style="text-align: center">
+        <h5 style="margin-bottom: 2px">Tabl.io is the number one cooking challenge generator.</h5>
+        <h5 style="margin-bottom: 2px">Created by two former chefs, <a style="color: #3e3e3e; font-weight: bold" href="https://www.linkedin.com/in/marcus-neidert-05b88b116/">Marcus Neidert</a><b> & </b><a style="color: #3e3e3e; font-weight: bold" href="https://www.facebook.com/karl.lundqvist.12">Karl Lundqvist</a>, to bring more excitement into your home cooking.</h5>
+        <h5 style="margin-bottom: 2px">Tabl.io generates exciting culinary challenges, tailor-made for your available cooking equipment, personal cooking style and food preferences.</h5>
+        <h5 style="margin-bottom: 2px"><a style="color: #3e3e3e" href="{{ url_for('register') }}">Join</a> Tabl.io today and Get cookin'!</h5>
+    </div>
+    </div>
+{% endblock content %}

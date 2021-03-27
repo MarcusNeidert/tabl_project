@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="background-color:rgba(255,255,255,0.65) ; border:none; padding-bottom: 50px; margin-top: 50px; border-radius: 10px">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mt-2 mb-3">Get ready to cook!</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm_password.label(class="form-control-label") }}
+                    {% if form.confirm_password.errors %}
+                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.user_style.label(class="form-control-label") }}
+                    {% if form.user_style.errors %}
+                        {{ form.user_style(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_style.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.user_style(class="custom-select form-control-lg") }}
+                    {% endif %}
+                </div>
+                <h5 class="font-weight-light" style="margin-bottom: 10px">Cookware at your disposal</h5>
+                <div class="form-group custom-checkbox">
+                    {% for cookware in form.user_cookware %}
+                        <div class="form-check">
+                                {{ cookware(class="custom-control-input") }}
+                                {{ cookware.label(class="custom-control-label") }}
+                        </div>
+                    {% endfor %}
+                    {% if form.user_cookware.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.user_cookware.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="container" style="background-color:rgba(255,255,255,0.65); border-style: solid; border-width: medium; border-color: white; border-radius: 5px; padding: 15px">
+                <h5 class="font-weight-light" style="margin-bottom: 15px">Do you have any intolerances?</h5>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.carbs_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for carb in form.carbs_intolerances %}
+                                    <div class="form-check">
+                                            {{ carb(class="custom-control-input") }}
+                                            {{ carb.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.carbs_intolerances.errors %}
+                                    {{ form.carbs_intolerances(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.carbs_intolerances.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.protein_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for protein in form.protein_intolerances %}
+                                    <div class="form-check">
+                                            {{ protein(class="custom-control-input") }}
+                                            {{ protein.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.protein_intolerances.errors %}
+                                    {{ form.protein_intolerances(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.protein_intolerances.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.flavouring_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for flavouring in form.flavouring_intolerances %}
+                                    <div class="form-check">
+                                            {{ flavouring(class="custom-control-input") }}
+                                            {{ flavouring.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                                {% if form.flavouring_intolerances.errors %}
+                                    {{ form.flavouring_intolerances(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.flavouring_intolerances.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-tabl") }}
+            </div>
+        </form>
+        <div class="border-top pt-3">
+        <p class="font-weight-light" style="color:#333333; font-size: 16">
+            Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}"style="color:darkblue; font-size: 18">Sign In</a>
+        </p>
+    </div>
+    </div>
+    <!-- TODO: make sure that you update this page if your user registration changes -->
+{% endblock content %}

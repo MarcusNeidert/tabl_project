@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="background-color: #ff6800; border:none; padding: 40px; margin-top: 50px; border-radius: 10px">
+        <legend class="border-bottom mb-4">Users</legend>
+        <form method="GET" action="">
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-tabl" type="submit">Search</button>
+          </div>
+        </div>
+        </form>
+        <table class="table">
+          <thead class="thead-dark" style="background-color: #131010">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">Cooking Style</th>
+            </tr>
+          </thead>
+
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.style.name }}</td>
+                    </tr>
+                  </tbody>
+                {% endfor %}
+            </table>
+    </div>
+{% endblock content %}

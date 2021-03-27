@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="background-color:rgba(255,255,255,0.65) ; border:none; padding-bottom: 50px; margin-top: 50px; border-radius: 10px;">
+      <div class="media">
+        <img class="rounded-circle account-img" style="width: 150px; height: 150px; background-size: cover; padding: 10px; margin-bottom:10px" src="{{ image_file }}">
+        <div class="media-body">
+          <h2 class="account-heading text-capitalize" style="padding-top:40px; padding-left:20px">{{ current_user.username }}</h2>
+          <p class="text" style="margin-top:-10px;padding-left:20px; color:gray; font-size: 18px">{{ current_user.email }}</p>
+        </div>
+      </div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Account Info</legend>
+                <div class="form-group">
+                    {{ form.username.label(class="form-control-label") }}
+                    {% if form.username.errors %}
+                        {{ form.username(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.username(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.update_style.label(class="form-control-label") }}
+                    {% if form.update_style.errors %}
+                        {{ form.update_style(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.update_style.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.update_style(class="custom-select form-control-lg") }}
+                    {% endif %}
+                </div>
+                <h5><i> Your cookware </i> </h5>
+                <div class="form-group custom-checkbox" style="padding-left: 12px">
+                    {% for cookware in form.update_cookware %}
+                        <div class="form-check">
+                                {{ cookware(class="custom-control-input") }}
+                                {{ cookware.label(class="custom-control-label") }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container" style="background-color:rgba(255,255,255,0.65); border-style: solid; border-width: medium; border-color: white; border-radius: 5px; padding: 15px; margin-bottom: 20px">
+                    <h5 style="margin-bottom: 20px"><i> Your intolerances </i></h5>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.update_carbs_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for carb in form.update_carbs_intolerances %}
+                                    <div class="form-check">
+                                            {{ carb(class="custom-control-input") }}
+                                            {{ carb.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.update_protein_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for carb in form.update_protein_intolerances %}
+                                    <div class="form-check">
+                                            {{ carb(class="custom-control-input") }}
+                                            {{ carb.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group custom-checkbox">
+                                {{ form.update_flavouring_intolerances.label(class="form-control-label font-weight-light") }}
+                                {% for flavouring in form.update_flavouring_intolerances %}
+                                    <div class="form-check">
+                                            {{ flavouring(class="custom-control-input") }}
+                                            {{ flavouring.label(class="custom-control-label") }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-5">
+                    {{ form.picture.label(class="custom-file-label") }}
+                    {{ form.picture(class="form-control-file") }}
+                    {% if form.picture.errors %}
+                        {% for error in form.picture.errors %}
+                            <span class="text-danger">{{ error }}</span></br>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-tabl") }}
+            </div>
+        </form>
+    </div>
+    <!-- TODO: make sure that you update this page if your user registration changes -->
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+     <div class="content-section" style="background-color: #ff6800; border:none; padding: 40px; margin-top: 50px; border-radius: 10px">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Cookware editor</legend>
+
+                <div class="form-group">
+                    {{ form.new_cookware.label(class="form-control-label") }}
+                    {% if form.new_cookware.errors %}
+                        {{ form.new_cookware(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.new_cookware.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.new_cookware(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group custom-checkbox">
+                    {{ form.remove_cookware.label(class="form-control-label") }}
+                    {% for cookware in form.remove_cookware %}
+                        <div class="form-check">
+                                {{ cookware(class="custom-control-input") }}
+                                {{ cookware.label(class="custom-control-label") }}
+                        </div>
+                    {% endfor %}
+                    {% if form.remove_cookware.errors %}
+                        {{ form.remove_cookware(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.remove_cookware.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group" style="padding-bottom:5px">
+                {{ form.submit(class="btn btn-tabl") }}
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section" style="background-color:rgba(255,255,255,0.65) ; border:none; padding-bottom: 50px; margin-top: 50px; border-radius: 10px">
+    {% if current_user.is_authenticated %}
+        <h1 style="margin-top:30px; margin-bottom: 20px; text-align: center">Welcome chef {{ current_user.username.title() }}!</h2>
+        <h4 style="text-align: center"> Feeling creative?</h4>
+        <div style="text-align: center; margin-top: 30px">
+            <button type="button" class="btn btn-tabl-large" onclick="location.href='challenge'"> Get cookin' </button>
+        </div>
+
+    {% else %}
+        <div style="text-align: center">
+            <h1 style="margin-top:30px; margin-bottom: 20px">Welcome to tabl.io!</h1>
+            <h5 style="margin-bottom: 2px"> Has your cooking gone stale as old bread?</h5>
+            <h5 style="margin-bottom: 2px"> Let <a style="color: #3e3e3e; font-weight: bold" href="{{ url_for('about') }}">tabl.io</a> help you!</h5>
+            <h5 style="margin-bottom: 2px"> All you need to do is <a style="color: #3e3e3e" href="{{ url_for('register') }}">Sign Up</a>, <a style="color: #3e3e3e" href="{{ url_for('login') }}">Sign In</a>, and we'll get you cookin'.</h5>
+        </div>
+    {% endif %}
+    </div>
+{% endblock content %}

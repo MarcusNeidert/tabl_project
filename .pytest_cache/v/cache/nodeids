@@ -1,0 +1,8 @@
+[
+  "test/integration_test.py::test_login",
+  "test/integration_test.py::test_logout",
+  "test/integration_test.py::test_register",
+  "test/integration_test.py::test_register_duplicate_user",
+  "test/integration_test.py::test_setup",
+  "test/integration_test.py::test_teardown"
+]
